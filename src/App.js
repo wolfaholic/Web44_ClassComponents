@@ -3,58 +3,7 @@ import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
 import './components/Todo.css'
 
-const todo  = [
-  {
-      task: 'Go Shopping for Dinner',
-      id: 1,
-      completed: false,
-  },
-  {
-      task: 'Feed the Dog',
-      id: 2,
-      completed: false
-  },
-  {
-      task: 'Walk the Dog',
-      id: 3,
-      completed: false
-  },
-  {
-      task: 'Do Laundry',
-      id: 4,
-      completed: false
-  },
-  {
-      task: 'Make Dinner',
-      id: 5,
-      completed: false
-  },
-  {
-      task: 'Do Classwork',
-      id: 6,
-      completed: false
-  },
-  {
-      task: 'Study',
-      id: 7,
-      completed: false
-  },
-  {
-      task:'Shower',
-      id: 8,
-      completed: false
-  },
-  {
-      task: 'Read',
-      id: 9,
-      completed: false
-  },
-  {
-      task:'Brush Teeth',
-      id: 0,
-      completed: false
-  }
-];
+
 
 
 class App extends React.Component {
@@ -65,19 +14,32 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todo: todo
+      todo: [
+        {
+          task: 'Read',
+          id: 9,
+          completed: false
+      },
+      {
+          task:'Brush Teeth',
+          id: 0,
+          completed: false
+      }
+      ]
     }
   }
 
-  addTodo = newTodo => {
-    this.setState({
-      todo: [...this.state.todo, {
-        task: newTodo,
-        id: Date.now(),
+  addTodo = (taskName) => {
+    const newTodo = {
+        task: taskName,
+        id: Date().now,
         completed: false
-      }]
-    })
-  }
+      };
+    this.setState({
+      todos: [...this.state.todos, newTodo]
+    });
+    };
+  
 
   toggleCompleted = todoId => {
     this.setState({
